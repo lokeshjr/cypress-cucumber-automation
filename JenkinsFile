@@ -49,13 +49,24 @@ pipeline {
             }
         }
         
-        stage('Publish Allure Report'){
+        stage('Deploy'){
             steps {
-                echo "Publishing Allure Report"
-                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+                echo "Deploying"
             }
         }
     }
 
-  
+    post {
+        always {
+           
+        
+         allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                ])
+         }
+    }
 }
