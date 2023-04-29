@@ -20,6 +20,8 @@ pipeline {
     environment {
         BUILD_USER = ''
     }
+
+      tools {nodejs "nodejs"}
     //The parameters directive provides a list of parameters that a user should provide when triggering the Pipeline.
     //The values for these user-specified parameters are made available to Pipeline steps via the params object, see
     //the Parameters, Declarative Pipeline for its specific usage.
