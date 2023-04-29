@@ -18,5 +18,5 @@ Feature: Add product to cart
 
         Examples:
             | product                       |  | productPrice |  | quantity |
-            | The Monk Who Sold His Ferrari |  | 179          |  | 10       |
-            | The Great Gatsby              |  | 109          |  | 19       |
+            | The Monk Who Sold His Ferrari |  | 131          |  | 10       |
+            | The Great Gatsby              |  | 108          |  | 19       |
