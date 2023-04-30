@@ -31,7 +31,6 @@ pipeline {
     //or other stage-specific directives. Practically speaking, all of the real work done by a Pipeline will be wrapped
     //in one or more stage directives.
     stages {
-
          stage('Build and Testing') {
             steps {
                 sh 'node --version'
@@ -40,7 +39,7 @@ pipeline {
                 sh "npx cypress run --browser ${BROWSER} --headed --env allure=true"
             }
         }
-        
+    }   
 
     post {
         always {
@@ -53,4 +52,4 @@ pipeline {
                 ])
          }
     }
-}
+}   
