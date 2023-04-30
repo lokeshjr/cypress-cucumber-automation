@@ -21,6 +21,7 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   defaultCommandTimeout: 20000,
   chromeWebSecurity: false,
+  video: false,
   e2e: {
     hideXHRInCommandLog: true,
     setupNodeEvents,
