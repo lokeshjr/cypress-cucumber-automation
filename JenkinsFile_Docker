@@ -13,7 +13,11 @@ def getBuildUser() {
 pipeline {
     //The agent section specifies where the entire Pipeline, or a specific stage, 
     //will execute in the Jenkins environment depending on where the agent section is placed.
-    agent any
+    agent {
+        docker {
+          image 'cypress/included'
+          args '-u 0'
+        }
     }
     //The parameters directive provides a list of parameters that a user should provide when triggering the Pipeline.
     //The values for these user-specified parameters are made available to Pipeline steps via the params object, see
