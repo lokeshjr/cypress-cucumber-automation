@@ -33,6 +33,9 @@ pipeline {
     stages {
          stage('Build and Testing') {
             steps {
+                script {
+                 System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL", "3800");
+                }
                 sh 'node --version'
                 sh 'npx cypress --version'
                 sh "npm i"
