@@ -13,15 +13,15 @@ def getBuildUser() {
 pipeline {
     //The agent section specifies where the entire Pipeline, or a specific stage, 
     //will execute in the Jenkins environment depending on where the agent section is placed.
-    agent any
+    agent {
+        docker {image 'cypress/included'}
+    }
     
     //The environment directive specifies a sequence of key-value pairs which will be defined
     //as environment variables for all steps, or stage-specific steps, depending on where the environment directive is located within the Pipeline.
     environment {
         BUILD_USER = ''
     }
-
-      tools {nodejs "nodejs"}
     //The parameters directive provides a list of parameters that a user should provide when triggering the Pipeline.
     //The values for these user-specified parameters are made available to Pipeline steps via the params object, see
     //the Parameters, Declarative Pipeline for its specific usage.
@@ -44,6 +44,8 @@ pipeline {
         
         stage('Testing') {
             steps {
+                sh 'node --version'
+                sh 'npx cypress --version'
                 sh "npm i"
                 sh "npx cypress run --browser ${BROWSER} --headed --env allure=true"
             }
