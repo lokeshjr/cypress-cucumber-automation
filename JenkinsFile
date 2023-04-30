@@ -36,7 +36,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npx cypress --version'
                 sh "npm i"
-                sh "npx cypress run --browser ${BROWSER} --headed --env allure=true"
+                sh "npx cypress run --browser ${BROWSER} --env allure=true"
             }
         }
     }   
