@@ -18,5 +18,5 @@ Feature: Add product to cart
 
         Examples:
             | product                       |  | productPrice |  | quantity |
-            | The Monk Who Sold His Ferrari |  | 131          |  | 10       |
-            | The Great Gatsby              |  | 108          |  | 19       |
+            | The Monk Who Sold His Ferrari |  | 131.00       |  | 19       |
+            | The Book Thief                |  | 998.89       |  | 2        |

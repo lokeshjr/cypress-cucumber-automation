@@ -2,7 +2,8 @@ export class ProductConfirmationPage {
   elements = {
     addedToCartText: () =>
       cy.xpath("//div[@id='NATC_SMART_WAGON_CONF_MSG_SUCCESS']/span"),
-    cartSubTotal: () => cy.xpath("(//span[@class='a-price-whole'])[1]"),
+    cartSubTotal: () =>
+      cy.xpath("(//span[@class='a-price sw-subtotal-amount']/span)[1]"),
     proceedToBuyButton: () => cy.get("input[name='proceedToRetailCheckout']"),
     goToCartButton: () => cy.xpath("//span[@id='sw-gtc']/span/a"),
   };
@@ -10,16 +11,16 @@ export class ProductConfirmationPage {
   verifyProductConfirmationPage() {
     cy.title().should("include", "Shopping Cart");
     this.elements.addedToCartText().should("be.visible");
-    this.elements.cartSubTotal().should("be.visible");
   }
 
   verifyMessageAndTotalPrice(productPrice, quantity) {
-    let totalPrice = productPrice * quantity;
+    let totalPrice = parseFloat(productPrice * quantity).toFixed(2);
+    cy.log(totalPrice);
     this.elements
       .cartSubTotal()
       .invoke("text")
       .then((price) => {
-        expect(price.split(",").join("").split(".").join("")).to.eq(
+        expect(price.split("₹").join("").split(",").join("")).to.eq(
           String(totalPrice)
         );
       });
