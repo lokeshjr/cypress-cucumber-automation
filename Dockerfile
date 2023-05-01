@@ -1,6 +1,6 @@
 FROM cypress/included:latest
 
-WORKDIR /
+WORKDIR /e2e
 
 COPY . .
 

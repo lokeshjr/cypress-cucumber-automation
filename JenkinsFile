@@ -29,10 +29,9 @@ pipeline {
          stage('Build and Testing') {
             steps {
                 sh 'node --version'
-                sh 'npx cypress info'
-                sh 'docker build -t test:1.0.1 .'
-                sh 'docker run test:1.0.1 . --browser ${BROWSER} --env allure=true'
-
+                sh 'npx cypress --version'
+                sh "npm i"
+                sh "npx cypress run --browser ${BROWSER} --env allure=true"
             }
         }
     }   
