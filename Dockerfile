@@ -1,6 +1,8 @@
 FROM cypress/included:latest
 
-WORKDIR /e2e
+RUN mkdir /cypress-docker
+
+WORKDIR /cypress-docker
 
 COPY . .
 

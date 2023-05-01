@@ -1,0 +1,17 @@
+version: "3"
+services:
+  # this container will run Cypress test using built-in Electron browser
+  e2e-electron:
+    image: "cypress-docker-image:1.0.1"
+    command: "npx cypress run --headed --env allure=true"
+    volumes:
+      - ./cypress:/cypress-docker/cypress
+      - ./cypress/allure-results:/cypress-docker/cypress/allure-results
+
+  # this container will run Cypress test using built-in chrome browser
+  e2e-chrome:
+    image: "cypress-docker-image:1.0.1"
+    command: "npx cypress run --headed --browser chrome --env allure=true"
+    volumes:
+      - ./cypress:/cypress-docker/cypress
+      - ./cypress/allure-results:/cypress-docker/cypress/allure-results

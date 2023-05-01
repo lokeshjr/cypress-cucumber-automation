@@ -19,7 +19,7 @@ pipeline {
     //the Parameters, Declarative Pipeline for its specific usage.
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*.feature', description: 'Example: cypress/e2e/**/*.feature')
-        choice(name: 'BROWSER', choices: ['chrome', 'electron', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
+        choice(name: 'BROWSER', choices: ['chrome', 'electron'], description: 'Pick the web browser you want to use to run your scripts')
     }
     
     //The stage directive goes in the stages section and should contain a steps section, an optional agent section, 
@@ -31,7 +31,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npx cypress info'
                 sh 'docker build -t cypress-docker:1.0.1 .'
-                sh "docker run -it cypress-docker:1.0.1 . --browser ${BROWSER} --env allure=true"
+                sh "docker-compose run e2e-${browser}"
 
             }
         }
