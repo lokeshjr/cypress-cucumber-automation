@@ -18,5 +18,5 @@ Feature: Add product to cart
 
         Examples:
             | product                |  | productPrice |  | quantity |
-            | The Catcher in the Rye |  | 279.00       |  | 19       |
+            | The Catcher in the Rye |  | 131.00       |  | 19       |
             | The Book Thief         |  | 998.89       |  | 2        |
