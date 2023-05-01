@@ -17,6 +17,6 @@ Feature: Add product to cart
         Then I should see the sign in page
 
         Examples:
-            | product                       |  | productPrice |  | quantity |
-            | The Monk Who Sold His Ferrari |  | 131.00       |  | 19       |
-            | The Book Thief                |  | 998.89       |  | 2        |
+            | product                |  | productPrice |  | quantity |
+            | The Catcher in the Rye |  | 279.00       |  | 19       |
+            | The Book Thief         |  | 998.89       |  | 2        |

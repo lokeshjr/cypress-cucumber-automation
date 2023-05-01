@@ -1,0 +1,51 @@
+import groovy.json.JsonOutput
+
+def COLOR_MAP = [
+    'SUCCESS': 'good', 
+    'FAILURE': 'danger',
+]
+
+def getBuildUser() {
+    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+}
+
+
+pipeline {
+    //The agent section specifies where the entire Pipeline, or a specific stage, 
+    //will execute in the Jenkins environment depending on where the agent section is placed.
+    agent any
+    //The parameters directive provides a list of parameters that a user should provide when triggering the Pipeline.
+    //The values for these user-specified parameters are made available to Pipeline steps via the params object, see
+    //the Parameters, Declarative Pipeline for its specific usage.
+    parameters {
+        string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*.feature', description: 'Example: cypress/e2e/**/*.feature')
+        choice(name: 'BROWSER', choices: ['chrome', 'electron', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
+    }
+    
+    //The stage directive goes in the stages section and should contain a steps section, an optional agent section, 
+    //or other stage-specific directives. Practically speaking, all of the real work done by a Pipeline will be wrapped
+    //in one or more stage directives.
+    stages {
+         stage('Build and Testing') {
+            steps {
+                sh 'node --version'
+                sh 'npx cypress info'
+                sh 'docker build -t test:1.0.1 .'
+                sh 'docker run test:1.0.1 . --browser ${BROWSER} --env allure=true'
+
+            }
+        }
+    }   
+
+    post {
+        always {
+         allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                ])
+         }
+    }
+}   
