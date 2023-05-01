@@ -31,7 +31,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npx cypress info'
                 sh 'docker build -t cypress-docker:1.0.1 .'
-                sh "docker-compose run e2e-${BROWSER}"
+                sh "docker-compose up"
 
             }
         }
@@ -44,7 +44,7 @@ pipeline {
                     jdk: '',
                     properties: [],
                     reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'target/allure-results']]
+                    results: [[path: 'target/cypress/allure-results']]
                 ])
          }
     }
