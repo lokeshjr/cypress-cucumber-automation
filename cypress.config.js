@@ -29,4 +29,7 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.feature",
     //excludeSpecPattern: ["*.js"],
   },
+  env: {
+    allureResultsPath: "allure-results",
+  },
 });

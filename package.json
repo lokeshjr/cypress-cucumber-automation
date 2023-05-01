@@ -13,6 +13,9 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@cypress/xpath": "^2.0.3",
     "@shelex/cypress-allure-plugin": "^2.38.3",
-    "cypress": "^12.11.0"  
+    "cypress": "^12.11.0"
+  },
+  "dependencies": {
+    "npm": "^9.6.5"
   }
 }
