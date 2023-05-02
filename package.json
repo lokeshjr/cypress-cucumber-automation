@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:chrome-headed": "npx cypress run --browser chrome --headed --env allure=true && allure serve",
+    "cy:electron-headed": "npx cypress run --browser electron --headed --env allure=true && allure serve",
+    "cy:electron-headless": "npx cypress run --browser electron",
+    "cy:chrome-headless": "npx cypress run --browser chrome"
   },
   "author": "Lokesh Jhade",
   "license": "ISC",
