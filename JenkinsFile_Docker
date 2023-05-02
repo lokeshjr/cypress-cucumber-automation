@@ -31,7 +31,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npx cypress info'
                 sh 'docker build -t cypress-docker:1.0.1 .'
-                sh "docker run -it cypress-docker:1.0.1 . --browser ${BROWSER} --env allure=true"
+                sh "docker run cypress-docker:1.0.1 . --browser ${BROWSER} --env allure=true"
 
             }
         }
