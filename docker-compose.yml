@@ -14,4 +14,15 @@ services:
     command: "npx cypress run --headed --browser chrome --env allure=true"
     volumes:
       - ./cypress:/cypress-docker/cypress
-      - ./cypress/allure-results:/cypress-docker/cypress/allure-results
+      #- ./cypress/allure-results:/cypress-docker/cypress/allure-results
+
+  allure:
+    image: "frankescobar/allure-docker-service"
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 1
+      KEEP_HISTORY: 1
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./cypress/allure-results:/app/allure-results
+      - ./cypress/allure-reports:/app/default-reports
