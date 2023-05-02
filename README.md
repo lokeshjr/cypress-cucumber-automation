@@ -4,7 +4,6 @@ This repository provides a sample project that demonstrates how to use Cypress-c
 
 
 # Prerequisites
-=================
 
 Install:
 
