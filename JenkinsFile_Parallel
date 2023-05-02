@@ -19,7 +19,6 @@ pipeline {
     //the Parameters, Declarative Pipeline for its specific usage.
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*.feature', description: 'Example: cypress/e2e/**/*.feature')
-        choice(name: 'BROWSER', choices: ['chrome', 'electron'], description: 'Pick the web browser you want to use to run your scripts')
     }
     stages {
          stage('Build and Testing') {
